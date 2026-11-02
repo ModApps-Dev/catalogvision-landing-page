@@ -1,0 +1,6 @@
+# Ignore intermediate render files
+video_build/*.png
+video_build/*.mp3
+video_build/scene_*.mp4
+video_build/concat.txt
+.DS_Store

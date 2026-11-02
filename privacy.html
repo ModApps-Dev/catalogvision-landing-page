@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — CatalogVision AI</title>
+  <meta name="description" content="Privacy Policy for CatalogVision AI for Shopify by ModApps. Compliant with GDPR, CCPA, and Shopify App Store security guidelines.">
+  <link rel="icon" type="image/svg+xml" href="assets/app-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: { 500: '#6366f1', 600: '#4f46e5' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col justify-between">
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 font-bold text-white hover:text-indigo-400 transition">
+        <img src="assets/app-icon.svg" alt="CatalogVision AI Logo" class="w-8 h-8 rounded-lg">
+        <span>CatalogVision <span class="text-indigo-400">AI</span></span>
+      </a>
+      <a href="index.html" class="text-sm text-slate-400 hover:text-white transition">&larr; Back to Home</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-6 py-12 flex-1">
+    <div class="mb-10">
+      <h1 class="text-3xl font-extrabold text-white mb-2">Privacy Policy</h1>
+      <p class="text-slate-400 text-sm">Last updated: November 2, 2026</p>
+    </div>
+
+    <div class="space-y-8 text-sm leading-relaxed text-slate-300">
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h2 class="text-lg font-bold text-white mb-3">1. Overview</h2>
+        <p>
+          CatalogVision AI ("we", "us", "our") is committed to protecting your privacy. This Privacy Policy describes how we collect, use, and handle your data when you install and use our Shopify application ("the App").
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h2 class="text-lg font-bold text-white mb-3">2. What Data We Access &amp; Collect</h2>
+        <p class="mb-3">
+          CatalogVision AI operates strictly as a <strong>product catalog enrichment tool</strong>. We do NOT collect, access, or store personal customer data, payment information, or order histories.
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-slate-300">
+          <li><strong>Product Catalog Data:</strong> Product IDs, titles, descriptions, vendor names, and public product image URLs necessary to perform multimodal attribute extraction.</li>
+          <li><strong>Metafield Data:</strong> Product Category Metafield keys, namespaces, and compareDigests strictly required to execute compare-and-set publishing and 1-click compensating rollback.</li>
+          <li><strong>Shop Information:</strong> Your store domain (e.g., <code class="text-indigo-400">your-store.myshopify.com</code>) and active subscription plan tier to manage credit allowances.</li>
+        </ul>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h2 class="text-lg font-bold text-white mb-3">3. How We Use Your Data</h2>
+        <p>
+          Data accessed by CatalogVision AI is used solely to:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-slate-300 mt-2">
+          <li>Extract visual apparel traits (Color, Pattern, Neckline, Sleeve Length) via Google GenAI multimodal inference.</li>
+          <li>Map attributes to official Shopify Standard Product Taxonomy definitions.</li>
+          <li>Write Category Metafields directly to your store via Shopify Admin GraphQL mutations with concurrency safety.</li>
+          <li>Maintain a local Change Journal so you can inspect write history and execute 1-click rollbacks anytime.</li>
+        </ul>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h2 class="text-lg font-bold text-white mb-3">4. Security &amp; Data Storage</h2>
+        <p>
+          All communications between your Shopify store, our application servers, and Google GenAI APIs are encrypted in transit using industry-standard TLS 1.3. We do not sell, rent, or share your catalog data with third parties. Model prompts and inferences are stateless and are never used to train generalized foundation models.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h2 class="text-lg font-bold text-white mb-3">5. App Uninstallation &amp; Data Deletion</h2>
+        <p>
+          When you uninstall CatalogVision AI, our servers immediately receive Shopify's mandatory <code class="text-indigo-400">app/uninstalled</code> webhook. Your access tokens and active session records are permanently deleted within 48 hours. Any metafields previously written to your products remain permanently live in your Shopify store.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h2 class="text-lg font-bold text-white mb-3">6. Contact Us</h2>
+        <p>
+          If you have questions regarding this Privacy Policy or wish to request data deletion, contact us at:
+          <br>
+          <a href="mailto:support@modapps.dev" class="text-indigo-400 hover:underline font-semibold">support@modapps.dev</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-8 text-xs text-slate-500 text-center">
+    <p>&copy; 2026 ModApps. All rights reserved.</p>
+  </footer>
+</body>
+</html>

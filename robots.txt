@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://modapps-dev.github.io/catalogvision-landing-page/sitemap.xml

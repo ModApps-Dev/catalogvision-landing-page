@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merchant Documentation — CatalogVision AI</title>
+  <meta name="description" content="Quickstart guide and developer documentation for CatalogVision AI for Shopify.">
+  <link rel="icon" type="image/svg+xml" href="assets/app-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col justify-between">
+  <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 font-bold text-white hover:text-indigo-400 transition">
+        <img src="assets/app-icon.svg" alt="CatalogVision AI Logo" class="w-8 h-8 rounded-lg">
+        <span>CatalogVision <span class="text-indigo-400">AI</span></span>
+      </a>
+      <a href="index.html" class="text-sm text-slate-400 hover:text-white transition">&larr; Back to Home</a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-12 flex-1">
+    <div class="mb-10">
+      <span class="text-indigo-400 text-xs font-bold uppercase tracking-wider block mb-1">Documentation</span>
+      <h1 class="text-3xl font-extrabold text-white mb-2">Merchant Quickstart Guide</h1>
+      <p class="text-slate-400 text-sm">Everything you need to enrich apparel catalogs and power storefront search filters.</p>
+    </div>
+
+    <div class="space-y-8 text-sm leading-relaxed text-slate-300">
+      <!-- Step 1 -->
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">1</span>
+          <h2 class="text-lg font-bold text-white">Select Products to Enrich</h2>
+        </div>
+        <p>
+          Open CatalogVision AI from your Shopify Admin navigation. On the main dashboard, click <strong>"Scan Apparel Catalog"</strong>. The app connects to your catalog via GraphQL and identifies tops, shirts, and tees with unpopulated category metafields.
+        </p>
+      </section>
+
+      <!-- Step 2 -->
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">2</span>
+          <h2 class="text-lg font-bold text-white">Review Detected Attributes in Polaris</h2>
+        </div>
+        <p>
+          Each product is analyzed with multimodal vision AI to extract:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 text-slate-300 my-3">
+          <li><strong>Primary Color:</strong> Dominant hue mapped to Shopify's standard color taxonomy.</li>
+          <li><strong>Pattern:</strong> Solid, Striped, Plaid, Floral, Animal Print, Graphic, etc.</li>
+          <li><strong>Neckline:</strong> Crewneck, V-Neck, Scoop Neck, Collared, Hooded, Mock Neck, etc.</li>
+          <li><strong>Sleeve Length:</strong> Sleeveless, Short Sleeve, Elbow Sleeve, 3/4 Sleeve, Long Sleeve.</li>
+        </ul>
+        <p>
+          Each attribute displays a confidence rating badge (e.g., 98%). You can click <strong>"1-Click Approve All"</strong> or adjust individual attributes.
+        </p>
+      </section>
+
+      <!-- Step 3 -->
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">3</span>
+          <h2 class="text-lg font-bold text-white">Compare-and-Set Publishing</h2>
+        </div>
+        <p>
+          Click <strong>"Publish to Store"</strong>. The app writes the approved changes into Shopify using chunked <code class="text-indigo-400">metafieldsSet</code> mutations. Our compare-and-set safety check guarantees that if a team member edited that product in Admin after the preview was generated, the app will preserve your manual edit rather than overwriting it.
+        </p>
+      </section>
+
+      <!-- Step 4 -->
+      <section class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">4</span>
+          <h2 class="text-lg font-bold text-white">1-Click Compensating Rollback</h2>
+        </div>
+        <p>
+          Need to revert changes? Visit the <strong>Audit Log &amp; Rollback</strong> tab in the navigation. Every published batch has a <strong>"1-Click Rollback"</strong> button that automatically restores previous values while gracefully handling newly created fields.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-8 text-xs text-slate-500 text-center">
+    <p>&copy; 2026 ModApps. All rights reserved.</p>
+  </footer>
+</body>
+</html>

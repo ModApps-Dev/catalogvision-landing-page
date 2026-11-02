@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CatalogVision AI — Apparel Taxonomy & Category Metafields for Shopify</title>
+  <meta name="description" content="Multimodal vision AI for Shopify fashion brands. Automatically extract apparel colors, patterns, necklines, and sleeve lengths into official Shopify Category Metafields.">
+  <link rel="icon" type="image/svg+xml" href="assets/app-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: {
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #a5b4fc 0%, #c084fc 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Navigation -->
+  <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 font-bold text-xl text-white group">
+        <img src="assets/app-icon.svg" alt="CatalogVision AI Logo" class="w-9 h-9 rounded-xl shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition">
+        <span>CatalogVision <span class="text-indigo-400">AI</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#features" class="hover:text-white transition">Features</a>
+        <a href="#demo" class="hover:text-white transition">Watch Demo</a>
+        <a href="#simulator" class="hover:text-white transition">Interactive Preview</a>
+        <a href="#pricing" class="hover:text-white transition">Pricing</a>
+        <a href="docs.html" class="hover:text-white transition">Documentation</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="#pricing" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/25 transition text-sm flex items-center gap-2">
+          <span>Start Free Trial</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-24 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,102,241,0.25),rgba(255,255,255,0))]"></div>
+    <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold mb-8">
+        <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+        Built for Shopify Standard Product Taxonomy
+      </div>
+
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+        Enrich Your Apparel Catalog in <span class="gradient-text">Minutes, Not Weeks.</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+        Transform blank Category Metafields into rich, filterable product attributes. Multimodal AI extracts colors, patterns, necklines, and sleeve lengths with compare-and-set safe publishing and 1-click rollback.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <a href="#pricing" class="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-500/25 transition text-base flex items-center justify-center gap-2">
+          <span>Enrich 50 Products Free</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#demo" class="w-full sm:w-auto glass-panel hover:bg-slate-800 text-slate-200 font-semibold px-8 py-4 rounded-xl transition text-base flex items-center justify-center gap-2">
+          <svg class="w-5 h-5 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+          <span>Watch 60-Sec Demo</span>
+        </a>
+      </div>
+
+      <!-- Key guarantees -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto pt-4 border-t border-slate-800/60 text-xs text-slate-400">
+        <div class="flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Powers Shopify Search &amp; Discovery Filters</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Zero-Risk Compare-and-Set Concurrency</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>1-Click Compensating Rollback Engine</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demonstration Video Section -->
+  <section id="demo" class="py-20 bg-slate-900/50 border-y border-slate-800/80">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="text-indigo-400 text-xs font-bold tracking-wider uppercase mb-2 block">Visual Walkthrough</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">See CatalogVision AI in Action</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+          Watch how easy it is to analyze 500+ apparel items, review confidence-scored tags in Shopify Polaris, and publish official taxonomy metafields in one click.
+        </p>
+      </div>
+
+      <div class="glass-panel p-3 rounded-2xl shadow-2xl relative group">
+        <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center border border-slate-800">
+          <video id="appDemoVideo" controls playsinline class="w-full h-full object-cover">
+            <source src="assets/catalogvision_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="p-4 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 border-t border-slate-800/60 mt-3">
+          <div class="flex items-center gap-6">
+            <span>⏱️ 1-Minute Full Workflow</span>
+            <span>🎙️ Studio Voiceover</span>
+            <span>⚡ Real Shopify Admin Polaris UI</span>
+          </div>
+          <span class="text-indigo-400 font-semibold">1080p Full HD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Simulator Section -->
+  <section id="simulator" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-indigo-400 text-xs font-bold tracking-wider uppercase mb-2 block">Interactive Live Preview</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">How Multimodal Extraction Works</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+          Our vision engine analyzes apparel photos and supplier descriptions simultaneously to map official Shopify category metafields.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Product Card Simulated -->
+        <div class="lg:col-span-5 glass-panel p-6 rounded-2xl">
+          <div class="aspect-square rounded-xl overflow-hidden mb-4 bg-slate-900 relative">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800" alt="Sample Apparel Top" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3 bg-black/60 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Vision Scanned
+            </div>
+          </div>
+          <h3 class="font-bold text-white text-lg mb-1">Classic Organic Crewneck T-Shirt</h3>
+          <p class="text-slate-400 text-xs mb-3">SKU: APP-TOPS-1049 &bull; Vendor: Organic Basics</p>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            "Crafted from 100% organic ring-spun cotton. Features a relaxed cut, ribbed crewneck collar, and tailored short sleeves."
+          </p>
+        </div>
+
+        <!-- Extraction Output Table -->
+        <div class="lg:col-span-7 glass-panel p-6 rounded-2xl">
+          <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-800">
+            <div>
+              <h4 class="font-bold text-white text-base">Extracted Category Metafields</h4>
+              <p class="text-slate-400 text-xs">Mapped strictly to Shopify Standard Product Taxonomy</p>
+            </div>
+            <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-xs font-bold">
+              98.2% Confidence
+            </span>
+          </div>
+
+          <div class="space-y-3 mb-6">
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xs">🎨</span>
+                <div>
+                  <div class="text-xs text-slate-400">shopify--discovery--color</div>
+                  <div class="font-bold text-white text-sm">Navy Blue</div>
+                </div>
+              </div>
+              <span class="text-emerald-400 text-xs font-semibold">99% Match</span>
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xs">🏁</span>
+                <div>
+                  <div class="text-xs text-slate-400">shopify--discovery--pattern</div>
+                  <div class="font-bold text-white text-sm">Solid</div>
+                </div>
+              </div>
+              <span class="text-emerald-400 text-xs font-semibold">98% Match</span>
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xs">👕</span>
+                <div>
+                  <div class="text-xs text-slate-400">shopify--discovery--neckline</div>
+                  <div class="font-bold text-white text-sm">Crewneck</div>
+                </div>
+              </div>
+              <span class="text-emerald-400 text-xs font-semibold">97% Match</span>
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xs">✂️</span>
+                <div>
+                  <div class="text-xs text-slate-400">shopify--discovery--sleeve_length</div>
+                  <div class="font-bold text-white text-sm">Short Sleeve</div>
+                </div>
+              </div>
+              <span class="text-emerald-400 text-xs font-semibold">99% Match</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-indigo-950/40 border border-indigo-800/40 text-xs text-indigo-300 flex items-center gap-3">
+            <svg class="w-5 h-5 flex-shrink-0 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Instantly illuminates storefront filters in Shopify Search &amp; Discovery for shoppers.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section id="features" class="py-24 bg-slate-900/40 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-indigo-400 text-xs font-bold tracking-wider uppercase mb-2 block">Built for Scale</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Production-Grade Catalog Intelligence</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+          Engineered to give fashion brands and dropshippers clean, compliant taxonomy data without risk of overwriting manual edits.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass-panel p-8 rounded-2xl hover:border-indigo-500/40 transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xl mb-6">
+            👁️
+          </div>
+          <h3 class="font-bold text-white text-xl mb-3">Multimodal Vision Pipeline</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Directly scans product imagery using advanced multimodal models. Accurately distinguishes solid vs striped, crewneck vs v-neck, and sleeve cuts without hallucinating specs.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl hover:border-indigo-500/40 transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xl mb-6">
+            🛡️
+          </div>
+          <h3 class="font-bold text-white text-xl mb-3">Compare-and-Set Safety</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Never overwrites manual changes. Our chunked publishing engine checks Shopify's <code class="text-indigo-300">compareDigest</code> prior to writing to prevent race conditions.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl hover:border-indigo-500/40 transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xl mb-6">
+            ⏪
+          </div>
+          <h3 class="font-bold text-white text-xl mb-3">1-Click Compensating Rollback</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Peace of mind with full change journaling. Revert any batch in seconds. If a team member edited a field after publish, our engine detects and preserves their edit.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl hover:border-indigo-500/40 transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xl mb-6">
+            📋
+          </div>
+          <h3 class="font-bold text-white text-xl mb-3">Side-by-Side Review Queue</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Built natively inside Shopify Admin using Polaris. High-speed keyboard navigation and 1-click batch approval allow you to verify hundreds of items in minutes.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl hover:border-indigo-500/40 transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xl mb-6">
+            🔍
+          </div>
+          <h3 class="font-bold text-white text-xl mb-3">Search &amp; Discovery Native</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Populates official Shopify Category Metafield definitions directly. Instantly lights up faceted navigation, collection filtering, and buyer search facets.
+          </p>
+        </div>
+
+        <div class="glass-panel p-8 rounded-2xl hover:border-indigo-500/40 transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xl mb-6">
+            📦
+          </div>
+          <h3 class="font-bold text-white text-xl mb-3">Supplier Dropsheet Assistant</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Import vendor CSV files and dropsheets. Matches products deterministically by SKU or barcode, marrying wholesale data with visual verification.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-indigo-400 text-xs font-bold tracking-wider uppercase mb-2 block">Simple, Predictable Billing</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Invest in Hours of Saved Labor</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
+          All paid plans include a 14-day free trial. Billed directly through your official Shopify invoice.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <!-- Free Starter -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between border-slate-800">
+          <div>
+            <h3 class="font-bold text-white text-xl mb-2">Free Starter</h3>
+            <p class="text-slate-400 text-xs mb-6">Test and verify extraction on your own catalog.</p>
+            <div class="text-4xl font-extrabold text-white mb-1">$0</div>
+            <p class="text-slate-400 text-xs mb-6">Forever free &bull; No credit card needed</p>
+            <ul class="space-y-3 text-xs text-slate-300 border-t border-slate-800/80 pt-6 mb-8">
+              <li class="flex items-center gap-2">✓ 50 product enrichments / mo</li>
+              <li class="flex items-center gap-2">✓ Multimodal vision analysis</li>
+              <li class="flex items-center gap-2">✓ Shopify Category Metafields</li>
+              <li class="flex items-center gap-2">✓ Compare-and-set publishing</li>
+              <li class="flex items-center gap-2">✓ 1-Click compensating rollback</li>
+            </ul>
+          </div>
+          <a href="#" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-center text-sm transition">
+            Start Free
+          </a>
+        </div>
+
+        <!-- Starter Plan (Featured) -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between border-indigo-500/50 shadow-2xl shadow-indigo-500/10 relative">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+            Most Popular &bull; 14-Day Free Trial
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-xl mb-2">Starter</h3>
+            <p class="text-slate-400 text-xs mb-6">For growing fashion brands with seasonal drops.</p>
+            <div class="text-4xl font-extrabold text-white mb-1">$29<span class="text-sm font-normal text-slate-400"> / mo</span></div>
+            <p class="text-emerald-400 text-xs font-semibold mb-6">14-Day Free Trial Included</p>
+            <ul class="space-y-3 text-xs text-slate-300 border-t border-slate-800/80 pt-6 mb-8">
+              <li class="flex items-center gap-2 text-white font-semibold">✓ 1,200 product enrichments / mo</li>
+              <li class="flex items-center gap-2">✓ Fast background worker processing</li>
+              <li class="flex items-center gap-2">✓ Full Polaris review queue</li>
+              <li class="flex items-center gap-2">✓ Supplier dropsheet CSV matching</li>
+              <li class="flex items-center gap-2">✓ Priority queue &amp; email support</li>
+            </ul>
+          </div>
+          <a href="#" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-center text-sm shadow-lg shadow-indigo-600/30 transition">
+            Start 14-Day Free Trial
+          </a>
+        </div>
+
+        <!-- Growth Plan -->
+        <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between border-slate-800">
+          <div>
+            <h3 class="font-bold text-white text-xl mb-2">Growth</h3>
+            <p class="text-slate-400 text-xs mb-6">For high-SKU stores, multi-brand boutiques &amp; agencies.</p>
+            <div class="text-4xl font-extrabold text-white mb-1">$79<span class="text-sm font-normal text-slate-400"> / mo</span></div>
+            <p class="text-emerald-400 text-xs font-semibold mb-6">14-Day Free Trial Included</p>
+            <ul class="space-y-3 text-xs text-slate-300 border-t border-slate-800/80 pt-6 mb-8">
+              <li class="flex items-center gap-2 text-white font-semibold">✓ 5,000 product enrichments / mo</li>
+              <li class="flex items-center gap-2">✓ Unlimited batch sizes</li>
+              <li class="flex items-center gap-2">✓ Custom taxonomy alias overrides</li>
+              <li class="flex items-center gap-2">✓ Audit log with unlimited history</li>
+              <li class="flex items-center gap-2">✓ Dedicated 1-on-1 onboarding support</li>
+            </ul>
+          </div>
+          <a href="#" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-center text-sm transition">
+            Upgrade to Growth
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-24 bg-slate-900/40 border-t border-slate-800/80">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-indigo-400 text-xs font-bold tracking-wider uppercase mb-2 block">Got Questions?</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="space-y-6">
+        <div class="glass-panel p-6 rounded-2xl">
+          <h3 class="font-bold text-white text-base mb-2">Does CatalogVision AI overwrite my manual changes?</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Never. Our publishing pipeline uses atomic compare-and-set verification. If a product attribute was edited manually in your Shopify Admin, the engine detects the digest mismatch, refuses to overwrite it, and preserves your manual changes.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl">
+          <h3 class="font-bold text-white text-base mb-2">How does rollback work if I don't like a batch?</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Every batch write creates an immutable Change Journal entry storing prior values and digests. Clicking "1-Click Rollback" restores original values. If anyone manually modified an attribute after enrichment, our engine preserves their edit as a conflict.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl">
+          <h3 class="font-bold text-white text-base mb-2">Which apparel categories and attributes are supported?</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            V1 supports Tops, T-Shirts, Shirts, Blouses, Sweaters, and Hoodies. It targets four high-accuracy visual attributes: Primary Color, Pattern, Neckline, and Sleeve Length. Fabric composition and care instructions are parsed strictly from supplier text/CSVs rather than guessed from images.
+          </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl">
+          <h3 class="font-bold text-white text-base mb-2">Will this work with the Shopify Search &amp; Discovery app?</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Yes! CatalogVision AI writes directly to Shopify's standard taxonomy metafields (<code class="text-indigo-300">shopify--discovery--...</code>), which are the exact source used by Shopify Search &amp; Discovery for storefront filters.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-20 bg-gradient-to-br from-indigo-950/60 via-slate-950 to-slate-950 border-t border-slate-800">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">
+        Stop Tagging Thousands of SKUs by Hand.
+      </h2>
+      <p class="text-slate-300 text-base md:text-lg mb-8 max-w-2xl mx-auto">
+        Join leading apparel merchants saving 20+ hours on every catalog drop with automated multimodal taxonomy enrichment.
+      </p>
+      <a href="#pricing" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-600/30 transition text-base">
+        <span>Start 14-Day Free Trial</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-12 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="assets/app-icon.svg" alt="CatalogVision AI Logo" class="w-6 h-6">
+        <span class="font-bold text-slate-300">CatalogVision AI</span>
+        <span>&bull; Powered by ModApps</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="privacy.html" class="hover:text-slate-300 transition">Privacy Policy</a>
+        <a href="terms.html" class="hover:text-slate-300 transition">Terms of Service</a>
+        <a href="docs.html" class="hover:text-slate-300 transition">Documentation</a>
+        <a href="faq.html" class="hover:text-slate-300 transition">FAQ</a>
+        <a href="support.html" class="hover:text-slate-300 transition">Support</a>
+      </div>
+
+      <div>
+        &copy; 2026 ModApps. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
