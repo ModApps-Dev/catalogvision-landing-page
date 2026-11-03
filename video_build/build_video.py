@@ -33,8 +33,17 @@ SCENES = [
         "png": os.path.join(WORK_DIR, "scene_3.png"),
         "audio": os.path.join(WORK_DIR, "scene_3.mp3"),
         "video": os.path.join(WORK_DIR, "scene_3.mp4"),
-        "text": "Every suggestion is mapped strictly to the official Shopify Standard Product Taxonomy. Review your catalog side-by-side in Shopify Admin, complete with transparent confidence scores. Approve items individually, or click Approve All for high-speed verification.",
+        "text": "You never have to accept an all-or-nothing batch. In the Polaris review table, you have complete editorial control. Inspect transparent confidence scores, use bulk actions to approve or exclude products, or click Exclude on individual items with a single click.",
         "zoom": "min(zoom+0.0006,1.06)",
+    },
+    {
+        "id": "scene_3b",
+        "html": os.path.join(WORK_DIR, "scene_3b_edit_modal.html"),
+        "png": os.path.join(WORK_DIR, "scene_3b.png"),
+        "audio": os.path.join(WORK_DIR, "scene_3b.mp3"),
+        "video": os.path.join(WORK_DIR, "scene_3b.mp4"),
+        "text": "Need to adjust a specific tag? Click Edit on any product to open the Quick-Edit modal. Select from official Shopify Standard Product Taxonomy values, save your changes, and the product is instantly verified and approved.",
+        "zoom": "min(zoom+0.0005,1.05)",
     },
     {
         "id": "scene_4",
@@ -42,7 +51,7 @@ SCENES = [
         "png": os.path.join(WORK_DIR, "scene_4.png"),
         "audio": os.path.join(WORK_DIR, "scene_4.mp3"),
         "video": os.path.join(WORK_DIR, "scene_4.mp4"),
-        "text": "Publishing is protected by Shopify compare-and-set concurrency checks, guaranteeing your manual edits are never overwritten. And if you ever need to revert, our compensating rollback engine restores prior values in seconds.",
+        "text": "When you publish, only approved items are written to Shopify, completely skipping excluded items. Our compare-and-set concurrency check guarantees manual edits are never overwritten, and our compensating rollback engine lets you revert any batch in seconds.",
         "zoom": "min(zoom+0.0005,1.05)",
     },
     {
@@ -51,7 +60,7 @@ SCENES = [
         "png": os.path.join(WORK_DIR, "scene_5.png"),
         "audio": os.path.join(WORK_DIR, "scene_5.mp3"),
         "video": os.path.join(WORK_DIR, "scene_5.mp4"),
-        "text": "Enrich your first fifty products completely free. Install CatalogVision AI today and transform your apparel catalog in minutes.",
+        "text": "Enrich your first fifty products completely free. Install CatalogVision AI on the Shopify App Store today.",
         "zoom": "min(zoom+0.0006,1.06)",
     },
 ]
@@ -90,8 +99,6 @@ def main():
         frames = int(dur * fps)
         print(f"Rendering {s['id']} (Duration: {dur:.2f}s, Frames: {frames})...")
 
-        # Create smooth video clip with audio
-        # Using scale and format for maximum compatibility
         filter_complex = f"zoompan=z='{s['zoom']}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={frames}:s=1920x1080:fps={fps},format=yuv420p"
         render_cmd = f'ffmpeg -y -loop 1 -i "{s["png"]}" -i "{s["audio"]}" -vf "{filter_complex}" -c:v libx264 -preset fast -crf 18 -c:a aac -b:a 192k -t {dur} "{s["video"]}"'
         run(render_cmd)
@@ -109,7 +116,7 @@ def main():
 
     total_dur = get_audio_duration(final_output)
     size_mb = os.path.getsize(final_output) / (1024 * 1024)
-    print(f"\n✅ DEMO VIDEO RENDERED SUCCESSFULLY!")
+    print("\n[SUCCESS] DEMO VIDEO RENDERED SUCCESSFULLY!")
     print(f"Output File: {final_output}")
     print(f"Total Duration: {total_dur:.1f} seconds")
     print(f"File Size: {size_mb:.2f} MB")
