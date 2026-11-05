@@ -6,7 +6,7 @@ import glob
 CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 WORK_DIR = r"C:\repo\gemini\catalogvision-landing-page\video_build"
 ASSETS_DIR = r"C:\repo\gemini\catalogvision-landing-page\assets"
-VOICE = "en-US-ChristopherNeural"
+VOICE = "en-US-AvaNeural"
 
 SCENES = [
     {
