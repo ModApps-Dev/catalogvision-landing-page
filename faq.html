@@ -29,6 +29,13 @@
 
     <div class="space-y-6 text-sm leading-relaxed text-slate-300">
       <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+        <h2 class="text-base font-bold text-white mb-2">What happens if my products already have category metafields configured?</h2>
+        <p>
+          CatalogVision AI queries your live Shopify store values and automatically marks matching products as <strong class="text-emerald-400">Up to Date</strong>. Inside the <strong>Enrichment Studio</strong>, you can review a side-by-side Before &amp; After comparison. If your store already has the correct attributes, our engine safely bypasses redundant writes to conserve your Shopify API limits.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
         <h2 class="text-base font-bold text-white mb-2">How does CatalogVision AI prevent overwriting my recent store changes?</h2>
         <p>
           We use Shopify's native <code class="text-indigo-400">compareDigest</code> mechanism during the <code class="text-indigo-400">metafieldsSet</code> mutation. If a product's state changes between the time you generated a review batch and when you click Publish, Shopify rejects the conflicting item and preserves your manual changes.
