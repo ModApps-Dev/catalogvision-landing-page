@@ -31,199 +31,246 @@
   </div>
 
   <!-- Review Queue Content -->
-  <div class="flex-1 p-10 max-w-6xl mx-auto w-full flex flex-col justify-between">
+  <div class="flex-1 p-8 max-w-6xl mx-auto w-full flex flex-col justify-between">
     <!-- Top Action Bar -->
-    <div class="flex items-center justify-between pb-6 border-b border-gray-200">
+    <div class="flex items-center justify-between pb-4 border-b border-gray-200">
       <div>
         <div class="flex items-center gap-3">
-          <h1 class="text-2xl font-bold text-gray-900">Review Batch #a8f301bc</h1>
+          <h1 class="text-2xl font-bold text-gray-900">Enrichment Batch #a8f301bc</h1>
           <span class="bg-indigo-100 text-indigo-800 font-bold text-xs px-3 py-1 rounded-full border border-indigo-200">48 Approved &bull; 2 Excluded</span>
         </div>
-        <p class="text-sm text-gray-500 mt-1">Review suggestions, exclude borderline items, or edit attributes before publishing</p>
+        <p class="text-xs text-gray-500 mt-1">Review suggestions, exclude borderline items, or edit attributes before writing to Shopify.</p>
       </div>
 
-      <div class="flex items-center gap-4">
-        <button class="bg-white border border-gray-300 text-gray-700 font-bold px-5 py-2.5 rounded-lg shadow-sm text-sm hover:bg-gray-50 flex items-center gap-2">
+      <div class="flex items-center gap-3">
+        <button class="bg-white border border-gray-300 text-gray-700 font-bold px-4 py-2 rounded-lg shadow-sm text-xs hover:bg-gray-50 flex items-center gap-1.5">
           <span>✓ 1-Click Approve All</span>
         </button>
-        <button class="bg-[#008060] hover:bg-[#006e52] text-white font-extrabold px-6 py-2.5 rounded-lg shadow-md text-sm flex items-center gap-2">
+        <button class="bg-[#008060] hover:bg-[#006e52] text-white font-extrabold px-5 py-2 rounded-lg shadow-md text-xs flex items-center gap-2">
           <span>Publish to Store (48 Approved) &rarr;</span>
         </button>
       </div>
     </div>
 
-    <!-- Promoted Bulk Action Bar -->
-    <div class="bg-indigo-50 border border-indigo-200 px-6 py-3 rounded-xl flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <input type="checkbox" checked class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
-        <span class="text-xs font-bold text-indigo-900">2 products selected</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <button class="bg-white border border-indigo-300 text-indigo-700 hover:bg-indigo-50 text-xs font-bold px-4 py-1.5 rounded-lg shadow-sm">
-          Approve Selected (2)
-        </button>
-        <button class="bg-white border border-red-300 text-red-600 hover:bg-red-50 text-xs font-bold px-4 py-1.5 rounded-lg shadow-sm">
-          Exclude Selected (2)
-        </button>
-      </div>
-    </div>
-
-    <!-- Review Table -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex-1 my-4 flex flex-col">
-      <div class="bg-gray-50 px-6 py-3 border-b border-gray-200 grid grid-cols-12 text-xs font-bold text-gray-600 uppercase tracking-wider items-center">
-        <div class="col-span-4 flex items-center gap-3">
-          <input type="checkbox" class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
-          <span>Product</span>
+    <!-- Review Card Wrapper -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 mt-4 flex-1 flex flex-col justify-between">
+      <div>
+        <!-- Batch Overview Card Header -->
+        <div class="flex items-center justify-between pb-3">
+          <div>
+            <h2 class="text-base font-bold text-gray-900">Review, Edit &amp; Select Items for Publishing</h2>
+            <p class="text-xs text-gray-500">Select items to bulk approve or exclude. Click <strong>Edit</strong> on any product to customize detected attributes before writing to Shopify.</p>
+          </div>
+          <span class="bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold px-3 py-1 rounded-full">
+            REVIEW_READY
+          </span>
         </div>
-        <div class="col-span-2">Primary Color</div>
-        <div class="col-span-2">Pattern</div>
-        <div class="col-span-1">Neckline</div>
-        <div class="col-span-1">Sleeve</div>
-        <div class="col-span-1">Status</div>
-        <div class="col-span-1 text-right">Actions</div>
-      </div>
 
-      <div class="divide-y divide-gray-100 flex-1 overflow-hidden">
-        <!-- Row 1 (Approved) -->
-        <div class="px-6 py-3.5 grid grid-cols-12 items-center text-sm">
-          <div class="col-span-4 flex items-center gap-3">
-            <input type="checkbox" class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
-            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=120" class="w-11 h-11 rounded-lg object-cover border border-gray-200">
-            <div>
-              <div class="font-bold text-gray-900 text-xs">Organic Classic Crewneck</div>
-              <div class="text-[11px] text-gray-400">SKU: TOP-101</div>
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-2 border-b border-gray-200 pt-1 pb-3 text-xs font-semibold">
+          <button class="bg-gray-900 text-white px-3 py-1.5 rounded-lg font-bold">All Products (50)</button>
+          <button class="text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg">Specs Detected (42)</button>
+          <button class="text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg">Up to Date (6)</button>
+          <button class="text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg">No Specs (2)</button>
+          <button class="text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg">Approved (48)</button>
+          <button class="text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg">Excluded (2)</button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative my-3">
+          <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+            🔍
+          </span>
+          <input type="text" placeholder="Search by title, category, or attribute (e.g. 'T-shirt', 'Navy', 'Collared')..." class="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-gray-50/50">
+        </div>
+
+        <!-- Promoted Bulk Action Bar -->
+        <div class="bg-indigo-50 border border-indigo-200 px-4 py-2 rounded-lg flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2.5">
+            <input type="checkbox" checked class="w-3.5 h-3.5 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
+            <span class="text-xs font-bold text-indigo-900">2 products selected</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="bg-white border border-indigo-300 text-indigo-700 text-[11px] font-bold px-3 py-1 rounded shadow-sm">
+              Approve Selected (2)
+            </button>
+            <button class="bg-white border border-red-300 text-red-600 text-[11px] font-bold px-3 py-1 rounded shadow-sm">
+              Exclude Selected (2)
+            </button>
+          </div>
+        </div>
+
+        <!-- Review Table with Sortable Columns -->
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <div class="bg-gray-50 px-4 py-2.5 border-b border-gray-200 grid grid-cols-12 text-[11px] font-bold text-gray-600 uppercase tracking-wider items-center">
+            <div class="col-span-4 flex items-center gap-2">
+              <input type="checkbox" class="w-3.5 h-3.5 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
+              <span class="flex items-center gap-1 cursor-pointer">Product <span class="text-indigo-600 font-extrabold">▲</span></span>
+            </div>
+            <div class="col-span-2 flex items-center gap-1 cursor-pointer">Primary Color <span class="text-gray-400 text-[9px]">↕</span></div>
+            <div class="col-span-2 flex items-center gap-1 cursor-pointer">Pattern <span class="text-gray-400 text-[9px]">↕</span></div>
+            <div class="col-span-1 flex items-center gap-1 cursor-pointer">Neckline <span class="text-gray-400 text-[9px]">↕</span></div>
+            <div class="col-span-1 flex items-center gap-1 cursor-pointer">Sleeve <span class="text-gray-400 text-[9px]">↕</span></div>
+            <div class="col-span-1 flex items-center gap-1 cursor-pointer">Status <span class="text-gray-400 text-[9px]">↕</span></div>
+            <div class="col-span-1 text-right">Actions</div>
+          </div>
+
+          <div class="divide-y divide-gray-100">
+            <!-- Row 1: Approved (Up to Date) -->
+            <div class="px-4 py-2.5 grid grid-cols-12 items-center text-xs hover:bg-gray-50/50">
+              <div class="col-span-4 flex items-center gap-3">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=120" class="w-9 h-9 rounded-lg object-cover border border-gray-200">
+                <div>
+                  <div class="font-bold text-gray-900 text-xs">Organic Classic Crewneck</div>
+                  <div class="flex items-center gap-1.5 mt-0.5">
+                    <span class="bg-indigo-50 text-indigo-700 text-[9px] px-1.5 py-0.2 rounded font-semibold">Apparel</span>
+                    <span class="text-[10px] text-gray-400 font-mono">#TOP-101</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-2 flex items-center gap-1">
+                <span class="font-semibold text-gray-800 text-xs">Navy Blue</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[9px] px-1 py-0.2 rounded font-bold">99%</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-1">
+                <span class="font-semibold text-gray-800 text-xs">Solid</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[9px] px-1 py-0.2 rounded font-bold">98%</span>
+              </div>
+              <div class="col-span-1 flex items-center gap-1">
+                <span class="text-gray-800 text-xs">Crewneck</span>
+              </div>
+              <div class="col-span-1 flex items-center gap-1">
+                <span class="text-gray-800 text-xs">Short</span>
+              </div>
+              <div class="col-span-1">
+                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">Approved</span>
+              </div>
+              <div class="col-span-1 flex items-center justify-end gap-1.5 text-xs">
+                <button class="text-indigo-600 hover:text-indigo-800 font-bold">Edit</button>
+                <button class="text-red-600 hover:text-red-800 font-medium">Exclude</button>
+              </div>
+            </div>
+
+            <!-- Row 2: Selected & Excluded -->
+            <div class="px-4 py-2.5 grid grid-cols-12 items-center text-xs bg-red-50/20">
+              <div class="col-span-4 flex items-center gap-3">
+                <input type="checkbox" checked class="w-3.5 h-3.5 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=120" class="w-9 h-9 rounded-lg object-cover border border-gray-200 opacity-60">
+                <div>
+                  <div class="font-bold text-gray-600 text-xs line-through">Breton Stripe Boatneck</div>
+                  <div class="flex items-center gap-1.5 mt-0.5">
+                    <span class="bg-gray-100 text-gray-600 text-[9px] px-1.5 py-0.2 rounded font-semibold">Apparel</span>
+                    <span class="text-[10px] text-gray-400 font-mono">#TOP-102</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-2 flex items-center gap-1 opacity-60">
+                <span class="text-gray-500 text-xs">White/Navy</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-1 opacity-60">
+                <span class="text-gray-500 text-xs">Striped</span>
+              </div>
+              <div class="col-span-1 opacity-60">
+                <span class="text-gray-500 text-xs">Boatneck</span>
+              </div>
+              <div class="col-span-1 opacity-60">
+                <span class="text-gray-500 text-xs">3/4</span>
+              </div>
+              <div class="col-span-1">
+                <span class="bg-gray-200 text-gray-700 text-[10px] font-bold px-2 py-0.5 rounded-full">Excluded</span>
+              </div>
+              <div class="col-span-1 flex items-center justify-end gap-1.5 text-xs">
+                <button class="text-indigo-600 hover:text-indigo-800 font-bold">Edit</button>
+                <button class="text-emerald-600 hover:text-emerald-800 font-bold">Include</button>
+              </div>
+            </div>
+
+            <!-- Row 3: Specs Detected -->
+            <div class="px-4 py-2.5 grid grid-cols-12 items-center text-xs hover:bg-gray-50/50">
+              <div class="col-span-4 flex items-center gap-3">
+                <input type="checkbox" checked class="w-3.5 h-3.5 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
+                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=120" class="w-9 h-9 rounded-lg object-cover border border-gray-200">
+                <div>
+                  <div class="font-bold text-gray-900 text-xs">Heavyweight Fleece Pullover</div>
+                  <div class="flex items-center gap-1.5 mt-0.5">
+                    <span class="bg-indigo-50 text-indigo-700 text-[9px] px-1.5 py-0.2 rounded font-semibold">Apparel</span>
+                    <span class="text-[10px] text-gray-400 font-mono">#TOP-103</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-2 flex items-center gap-1">
+                <span class="font-semibold text-gray-800 text-xs">Heather Grey</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[9px] px-1 py-0.2 rounded font-bold">98%</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-1">
+                <span class="font-semibold text-gray-800 text-xs">Solid</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[9px] px-1 py-0.2 rounded font-bold">98%</span>
+              </div>
+              <div class="col-span-1 flex items-center gap-1">
+                <span class="text-gray-800 text-xs">Hooded</span>
+              </div>
+              <div class="col-span-1 flex items-center gap-1">
+                <span class="text-gray-800 text-xs">Long</span>
+              </div>
+              <div class="col-span-1">
+                <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">Specs Detected</span>
+              </div>
+              <div class="col-span-1 flex items-center justify-end gap-1.5 text-xs">
+                <button class="text-indigo-600 hover:text-indigo-800 font-bold">Edit</button>
+                <button class="text-emerald-600 hover:text-emerald-800 font-bold">Approve</button>
+              </div>
+            </div>
+
+            <!-- Row 4: Up to Date -->
+            <div class="px-4 py-2.5 grid grid-cols-12 items-center text-xs hover:bg-gray-50/50">
+              <div class="col-span-4 flex items-center gap-3">
+                <input type="checkbox" class="w-3.5 h-3.5 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
+                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=120" class="w-9 h-9 rounded-lg object-cover border border-gray-200">
+                <div>
+                  <div class="font-bold text-gray-900 text-xs">Minimalist Linen Buttondown</div>
+                  <div class="flex items-center gap-1.5 mt-0.5">
+                    <span class="bg-indigo-50 text-indigo-700 text-[9px] px-1.5 py-0.2 rounded font-semibold">Apparel</span>
+                    <span class="text-[10px] text-gray-400 font-mono">#TOP-104</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-2 flex items-center gap-1">
+                <span class="font-semibold text-gray-800 text-xs">White</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[9px] px-1 py-0.2 rounded font-bold">97%</span>
+              </div>
+              <div class="col-span-2 flex items-center gap-1">
+                <span class="font-semibold text-gray-800 text-xs">Solid</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[9px] px-1 py-0.2 rounded font-bold">96%</span>
+              </div>
+              <div class="col-span-1 flex items-center gap-1">
+                <span class="text-gray-800 text-xs">Collared</span>
+              </div>
+              <div class="col-span-1 flex items-center gap-1">
+                <span class="text-gray-800 text-xs">Long</span>
+              </div>
+              <div class="col-span-1">
+                <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap">Up to Date</span>
+              </div>
+              <div class="col-span-1 flex items-center justify-end gap-1.5 text-xs">
+                <button class="text-indigo-600 hover:text-indigo-800 font-bold">View</button>
+                <button class="text-red-600 hover:text-red-800 font-medium">Exclude</button>
+              </div>
             </div>
           </div>
-          <div class="col-span-2 flex items-center gap-1.5">
-            <span class="font-semibold text-gray-800 text-xs">Navy Blue</span>
-            <span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">99%</span>
-          </div>
-          <div class="col-span-2 flex items-center gap-1.5">
-            <span class="font-semibold text-gray-800 text-xs">Solid</span>
-            <span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">98%</span>
-          </div>
-          <div class="col-span-1 flex items-center gap-1">
-            <span class="font-semibold text-gray-800 text-xs">Crewneck</span>
-          </div>
-          <div class="col-span-1 flex items-center gap-1">
-            <span class="font-semibold text-gray-800 text-xs">Short</span>
-          </div>
-          <div class="col-span-1">
-            <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded-full">APPROVED</span>
-          </div>
-          <div class="col-span-1 flex items-center justify-end gap-2 text-xs">
-            <button class="text-indigo-600 hover:text-indigo-800 font-bold">Edit</button>
-            <button class="text-red-600 hover:text-red-800 font-medium">Exclude</button>
-          </div>
-        </div>
-
-        <!-- Row 2 (Excluded Example!) -->
-        <div class="px-6 py-3.5 grid grid-cols-12 items-center text-sm bg-red-50/30">
-          <div class="col-span-4 flex items-center gap-3">
-            <input type="checkbox" checked class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
-            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=120" class="w-11 h-11 rounded-lg object-cover border border-gray-200 opacity-60">
-            <div>
-              <div class="font-bold text-gray-500 text-xs line-through">Breton Stripe Boatneck</div>
-              <div class="text-[11px] text-gray-400">SKU: TOP-102 (Omitted by user)</div>
-            </div>
-          </div>
-          <div class="col-span-2 flex items-center gap-1.5 opacity-60">
-            <span class="text-gray-500 text-xs">White/Navy</span>
-          </div>
-          <div class="col-span-2 flex items-center gap-1.5 opacity-60">
-            <span class="text-gray-500 text-xs">Striped</span>
-          </div>
-          <div class="col-span-1 opacity-60">
-            <span class="text-gray-500 text-xs">Scoop</span>
-          </div>
-          <div class="col-span-1 opacity-60">
-            <span class="text-gray-500 text-xs">3/4</span>
-          </div>
-          <div class="col-span-1">
-            <span class="bg-gray-200 text-gray-700 text-[11px] font-bold px-2 py-0.5 rounded-full">EXCLUDED</span>
-          </div>
-          <div class="col-span-1 flex items-center justify-end gap-2 text-xs">
-            <button class="text-indigo-600 hover:text-indigo-800 font-bold">Edit</button>
-            <button class="text-emerald-600 hover:text-emerald-800 font-bold">Include</button>
-          </div>
-        </div>
-
-        <!-- Row 3 (Approved) -->
-        <div class="px-6 py-3.5 grid grid-cols-12 items-center text-sm">
-          <div class="col-span-4 flex items-center gap-3">
-            <input type="checkbox" class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
-            <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=120" class="w-11 h-11 rounded-lg object-cover border border-gray-200">
-            <div>
-              <div class="font-bold text-gray-900 text-xs">Heavyweight Fleece Pullover</div>
-              <div class="text-[11px] text-gray-400">SKU: TOP-103</div>
-            </div>
-          </div>
-          <div class="col-span-2 flex items-center gap-1.5">
-            <span class="font-semibold text-gray-800 text-xs">Heather Grey</span>
-            <span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">98%</span>
-          </div>
-          <div class="col-span-2 flex items-center gap-1.5">
-            <span class="font-semibold text-gray-800 text-xs">Solid</span>
-            <span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">98%</span>
-          </div>
-          <div class="col-span-1 flex items-center gap-1">
-            <span class="font-semibold text-gray-800 text-xs">Hooded</span>
-          </div>
-          <div class="col-span-1 flex items-center gap-1">
-            <span class="font-semibold text-gray-800 text-xs">Long</span>
-          </div>
-          <div class="col-span-1">
-            <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded-full">APPROVED</span>
-          </div>
-          <div class="col-span-1 flex items-center justify-end gap-2 text-xs">
-            <button class="text-indigo-600 hover:text-indigo-800 font-bold">Edit</button>
-            <button class="text-red-600 hover:text-red-800 font-medium">Exclude</button>
-          </div>
-        </div>
-
-        <!-- Row 4 (Approved) -->
-        <div class="px-6 py-3.5 grid grid-cols-12 items-center text-sm bg-gray-50/50">
-          <div class="col-span-4 flex items-center gap-3">
-            <input type="checkbox" class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-gray-300">
-            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=120" class="w-11 h-11 rounded-lg object-cover border border-gray-200">
-            <div>
-              <div class="font-bold text-gray-900 text-xs">Breathable Linen Spread Shirt</div>
-              <div class="text-[11px] text-gray-400">SKU: TOP-104</div>
-            </div>
-          </div>
-          <div class="col-span-2 flex items-center gap-1.5">
-            <span class="font-semibold text-gray-800 text-xs">Olive Green</span>
-            <span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">97%</span>
-          </div>
-          <div class="col-span-2 flex items-center gap-1.5">
-            <span class="font-semibold text-gray-800 text-xs">Solid</span>
-            <span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded font-bold">96%</span>
-          </div>
-          <div class="col-span-1 flex items-center gap-1">
-            <span class="font-semibold text-gray-800 text-xs">Collared</span>
-          </div>
-          <div class="col-span-1 flex items-center gap-1">
-            <span class="font-semibold text-gray-800 text-xs">Long</span>
-          </div>
-          <div class="col-span-1">
-            <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded-full">APPROVED</span>
-          </div>
-          <div class="col-span-1 flex items-center justify-end gap-2 text-xs">
-            <button class="text-indigo-600 hover:text-indigo-800 font-bold">Edit</button>
-            <button class="text-red-600 hover:text-red-800 font-medium">Exclude</button>
-          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Editorial Control Banner -->
-    <div class="bg-slate-900 text-white px-6 py-4 rounded-xl flex items-center justify-between text-xs">
-      <div class="flex items-center gap-3">
-        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-        <span><strong>Selective Publishing Active:</strong> Excluded items are permanently omitted from the live publish payload.</span>
+      <!-- Pagination Footer -->
+      <div class="flex items-center justify-between pt-3 border-t border-gray-100 text-xs text-gray-500">
+        <span>Showing 1–25 of 50 products</span>
+        <div class="flex items-center gap-2">
+          <button disabled class="bg-gray-100 text-gray-400 px-3 py-1 rounded border border-gray-200 cursor-not-allowed">Previous</button>
+          <button class="bg-white hover:bg-gray-50 text-gray-700 px-3 py-1 rounded border border-gray-300 font-semibold shadow-sm">Next</button>
+        </div>
       </div>
-      <span class="text-indigo-400 font-semibold">Zero forced approvals &bull; 100% merchant editorial control</span>
     </div>
   </div>
+
 </body>
 </html>
